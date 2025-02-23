@@ -37,11 +37,11 @@ RUN CODE INSTRUCTIONS:
         you can change env_type in config.py file and run env_demo.py to see how each environment behaves
     
   - Section Two:
-        * run main.py (in root directory) to train and evaluate a model.
-        * run tensorboard --logdir tensorboard_logs (in root directory), then go to http://localhost:6006/ and see visualizations of training
+    * run main.py (in root directory) to train and evaluate a model.
+    * run tensorboard --logdir tensorboard_logs (in root directory), then go to http://localhost:6006/ and see visualizations of training
 
   - Section Three:
-        * run main_forecast.py to train and evaluate agent that uses forecasting model
-        * can run main.py (in DDPG_forecasting) to check on custom dataset
+     * run main_forecast.py to train and evaluate agent that uses forecasting model
+     * can run main.py (in DDPG_forecasting) to check on custom dataset
     
     
