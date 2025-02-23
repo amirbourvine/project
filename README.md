@@ -1,4 +1,5 @@
 OVERVIEW OF GIT STRUCTURE:
+
   - gymnasium_env: python package (we created) for gym envs, which includes the ElectricityMarket environment.
     
   - DDPG_forecasting: a directory that includes the third (research) part of the project.
@@ -24,3 +25,23 @@ OVERVIEW OF GIT STRUCTURE:
   - main.py: script to run for the second part of the project to train and evaluate stable_baseline3 model
     
   - tensorboard_logs: saved metrics from the second part of the project
+
+SET-UP INSTRUCTIONS:
+
+  - clone this git repo to your local machine
+  - install dependencies in requirements.txt file by running: pip install -r requirements.txt
+
+RUN CODE INSTRUCTIONS:
+
+  - Section One:
+        you can change env_type in config.py file and run env_demo.py to see how each environment behaves
+    
+  - Section Two:
+        * run main.py (in root directory) to train and evaluate a model.
+        * run tensorboard --logdir tensorboard_logs (in root directory), then go to http://localhost:6006/ and see visualizations of training
+
+  - Section Three:
+        * run main_forecast.py to train and evaluate agent that uses forecasting model
+        * can run main.py (in DDPG_forecasting) to check on custom dataset
+    
+    
