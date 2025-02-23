@@ -44,4 +44,6 @@ RUN CODE INSTRUCTIONS:
      * run main_forecast.py to train and evaluate agent that uses forecasting model
      * can run main.py (in DDPG_forecasting) to check on custom dataset
     
-    
+
+NOTICE!
+  - The horizon suitbale for envs 1-3 is 10, and for env 4 is 5,000! Change accordingly in the file you run!
