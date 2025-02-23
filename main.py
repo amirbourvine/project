@@ -3,7 +3,7 @@ from train_model import train
 from eval_model import eval
 
 # create env
-env = gym.make('gymnasium_env/ElectricityMarketEnv-v0', capacity=10 , max_t=5000)
+env = gym.make('gymnasium_env/ElectricityMarketEnv-v0', capacity=10 , max_t=10)
 
 # train model
 model = train(env, model_type="SAC")
