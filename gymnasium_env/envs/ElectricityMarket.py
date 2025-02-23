@@ -7,6 +7,7 @@ class ElectricityMarketEnv(gym.Env):
 
     metadata = {"render_modes": [], "render_fps": 0}
 
+    # function d(t), different for different env_types
     def demand(self, t:int) -> float:
 
         if env_type==3:
@@ -31,7 +32,7 @@ class ElectricityMarketEnv(gym.Env):
         return val+noise
 
 
-
+    # function p(t), different for different env_types
     def price(self, t:int) -> float:
 
         if env_type==3:
@@ -68,13 +69,11 @@ class ElectricityMarketEnv(gym.Env):
         # Observations are (soc, d_t, p_t)
         self.observation_space = gym.spaces.Box(low=np.array([0,0,0]), high=np.array([self.capacity,np.inf,np.inf]), dtype=np.float64)
 
+        # normalized!
         self.action_space = gym.spaces.Box(low=-1, high=1, dtype=np.float64)
     
     def _get_obs(self):
         return np.array([self.soc,self.d, self.p], dtype=np.float64)
-    
-    # def get_capacity(self):
-    #     return self.capacity
 
     def reset(self, seed: Optional[int] = None, options: Optional[dict] = None):
         # We need the following line to seed self.np_random
@@ -101,6 +100,8 @@ class ElectricityMarketEnv(gym.Env):
         reward = 0
         info = {}
 
+
+        # different rewards for different env_types
         if self.soc > old_soc:
             if env_type==2:
                 reward = -(self.power_production_cost*(self.soc-old_soc))
@@ -110,6 +111,7 @@ class ElectricityMarketEnv(gym.Env):
             reward = ((old_soc-self.soc)-self.d)*self.p
             info = {"demand": (self.d), "total": (old_soc-self.soc)}
         
+        # update d and p for new t
         self.d = self.demand(t=self.t)
         self.p = self.price(t=self.t)
 

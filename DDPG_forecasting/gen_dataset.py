@@ -5,6 +5,8 @@ import pandas as pd
 from config import env_type, N_FEATURES
 
 def gen_seqs(env, num_seq, horizon):
+    # generate the sequences of ds and ps
+
     seq_p = []
     seq_d = []
 
@@ -34,6 +36,8 @@ def gen_seqs(env, num_seq, horizon):
     return seq_p, seq_d
 
 def gen_dataset(env, num_seq, horizon):
+    # saves sequences to csv file, aka dataset
+    
     seq_p, seq_d = gen_seqs(env, num_seq, horizon)
 
     df_d = pd.DataFrame(seq_d, columns=['V6'])

@@ -16,6 +16,8 @@ tf.disable_v2_behavior()
 
 class forecast_agent:
     def __init__(self):
+        # trains forecasting models in the init
+
         print("start: train D")
         tf.reset_default_graph()  # Important: Reset the graph before creating new agents
 
@@ -29,17 +31,23 @@ class forecast_agent:
         self.must_sell = False
 
     def predict(self, curr_battery, state_d, state_p, capacity, file=None):
+        # given the current state predicts next action
+
+        # if no battery then must charge
         if curr_battery==0.0:
             return np.array([1.0])
         
+        # if must sell (did not sell last time) then sells
         if self.must_sell:
             self.must_sell = False
             return np.array([-1.0])
 
-
+        # if demand is larger than capacity do not do anything
         if state_d[-1] >= capacity:
             return np.array([0.0])
 
+
+        # calculate profit made by selling now vs the next step, than decide when to sell
         sell_now = state_p[-1]*max((capacity-state_d[-1]),0)
 
         new_state_p = (self.p_state_scaler.transform(state_p.reshape(1,-1)))[0]
@@ -70,7 +78,8 @@ class forecast_agent:
 
 
     def eval_agent(self, env, horizon):
-
+        # after training, uses agent to play in the env and reports metrics
+        
         file = open("forecast_eval_log.txt", "w")
 
         obs, info = env.reset()

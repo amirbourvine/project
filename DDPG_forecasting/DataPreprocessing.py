@@ -10,6 +10,8 @@ This part of code is to load and preprocess time series data.
 import numpy as np
 
 
+# build states and actions matrices.
+# action is the next value, and state is the past N_FEATURES values
 def build_s_a(sequence,n,m):
     '''
     Args:
@@ -29,7 +31,7 @@ def build_s_a(sequence,n,m):
     return state_mat,best_action
 
 
-
+# normalize states
 def normalization(traindata,testdata):
     from sklearn.preprocessing import MinMaxScaler
     scaler = MinMaxScaler()

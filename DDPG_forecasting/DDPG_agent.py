@@ -218,5 +218,6 @@ class DDPG():
                                                             self.a:batch_a,
                                                             self.s_:batch_s_,
                                                             self.r:batch_r})
+
 if __name__ == '__main__':
     ddpg = DDPG(5,0,1,0.03,0.01,30,30)

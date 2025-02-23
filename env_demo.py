@@ -26,11 +26,11 @@ def main():
     # observation, reward, terminated, truncated, info = env.step(np.array([-1.00]))
     # print(observation, reward, terminated, truncated, info)
 
-    for i in range(810):
+    for i in range(8):
         observation, reward, terminated, truncated, info = env.step(np.array([0]))
 
-        if i>=800:
-            print(observation, reward, terminated, truncated, info)
+        # if i>=800:
+        print(observation, reward, terminated, truncated, info)
 
     
 

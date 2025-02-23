@@ -85,6 +85,7 @@ def train_forecast_agent(is_d):
             
             s = s_
 
+    # evaluate
     pred = []
     actual = []
     for _ in range(NUM_TEST):

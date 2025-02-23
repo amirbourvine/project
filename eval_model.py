@@ -1,4 +1,6 @@
 def eval(model, horizon: int):
+    # evaluate a sb3 model for horizon actions
+
     vec_env = model.get_env()
     obs = vec_env.reset()
     profit_sum = 0.0

@@ -8,6 +8,8 @@ from config import LOG_DIR, env_type
 def train(env, model_type):
     model = None
 
+    # assign different hyperparamters to different agents
+
     if model_type=="SAC":
         model = SAC("MlpPolicy", env, verbose=1, tensorboard_log=LOG_DIR)
         if env_type==2 or env_type==3 or env_type==4: 
@@ -32,6 +34,8 @@ def train(env, model_type):
 
     os.makedirs(LOG_DIR, exist_ok=True)
 
+
+    # train model using sb3
     model.learn(total_timesteps=total_timesteps, tb_log_name=f"training_run_{model_type}_envType={env_type}")
 
     return model
